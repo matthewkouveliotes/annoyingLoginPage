@@ -1,1 +1,18 @@
+#signindiv {
+    background-color: white;
+    margin-top: 10vw;
+    border-radius: 25px;
+}
 
+
+#passwordInput {
+    transition: margin 500ms;
+    justify-self: center;
+}
+
+#password {
+    margin: auto;
+}
+#lastchar {
+    margin: auto;
+}
