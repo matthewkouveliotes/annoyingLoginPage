@@ -9,6 +9,30 @@ const digitsShuffle = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 const symbols = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "{", "]", "}", ":", ";", "\"", "'", "<", ",", ".", ">", "/", "?", "\\", "|"];
 const symbolsShuffle = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "{", "]", "}", ":", ";", "\"", "'", "<", ",", ".", ">", "/", "?", "\\", "|"];
+
+const acceptedPasswords = [
+    "PaBo",
+    "3yOK",
+    "zv1C",
+    "lJOnT",
+    "47BKj",
+    "a8nz1",
+    "qUIWyL",
+    "oRhbiL",
+    "52E9Ui",
+    "NnpWHGx",
+    "9KMdmXR",
+    "intPwBk",
+    "FHPEJlC2",
+    "6fcP7UkQ",
+    "TwHQWnNO",
+    "oKM6vOl24",
+    "nAiWV5Ekw",
+    "2WqRewZmk",
+    "telSFm9WWi",
+    "4ZGoTgREeM",
+    "n3mD4Auz0G",
+];
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 const keyMap = new Map();
@@ -39,12 +63,19 @@ function listener() {
             event.preventDefault();
             document.getElementById("password").value += keyPress;
         }
+        if(event.key === "Shift") {
+            return;
+        }
 
         var mL = Math.random() * 210 - 110;
         var mT = Math.random() * 40;
         box.style.marginLeft = mL + "%";
         box.style.marginTop = mT + "vh";
 
+    });
+    document.getElementById("password").addEventListener("paste", (event) => {
+        event.preventDefault();
+        alert("No pasting... nice try though");
     })
 }
 
@@ -62,4 +93,24 @@ function darkMode() {
     for(var i = 0; i < 5; i++) {
         window.open(url, '_blank');
     }
+}
+
+function signIn() {
+    if(acceptedPasswords.includes(document.getElementById("password").value)) {
+        var varAuth = randomString(15);
+        localStorage.setItem("expected", varAuth);
+        var authString = btoa(document.getElementById("password").value + "auth2=" + varAuth);
+
+        window.location.href = "signedIn/?auth=" + authString;
+    }
+}
+
+function randomString(length) {
+    var allChars = lowercase.concat(uppercase).concat(digits).concat(symbols);
+    var string = "";
+    for(var i = 0; i < length; i++) {
+        var randomNumber = Math.trunc(Math.random() * allChars.length);
+        string += allChars[randomNumber];
+    }
+    return string;
 }
