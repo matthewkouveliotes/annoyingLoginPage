@@ -6,7 +6,7 @@
 
 
 #passwordInput {
-    transition: margin 500ms;
+    transition: margin 50ms;
     justify-self: center;
 }
 
@@ -15,4 +15,16 @@
 }
 #lastchar {
     margin: auto;
+}
+
+#darkbutton {
+    margin-top: 5vw;
+    margin-left: 1vw;
+}
+
+@media only screen and (max-width: 650px) {
+    #darkbutton {
+        margin-top: 15vw;
+        margin-left: 1vw;
+    }
 }

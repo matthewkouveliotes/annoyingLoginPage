@@ -10,7 +10,6 @@ const digitsShuffle = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const symbols = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "{", "]", "}", ":", ";", "\"", "'", "<", ",", ".", ">", "/", "?", "\\", "|"];
 const symbolsShuffle = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "{", "]", "}", ":", ";", "\"", "'", "<", ",", ".", ">", "/", "?", "\\", "|"];
 const delay = ms => new Promise(res => setTimeout(res, ms));
-var keypressed = false;
 
 const keyMap = new Map();
 function listener() {
@@ -42,17 +41,9 @@ function listener() {
         }
 
         var mL = Math.random() * 210 - 110;
-        var mT = Math.random() * 50;
+        var mT = Math.random() * 40;
         box.style.marginLeft = mL + "%";
         box.style.marginTop = mT + "vh";
-        await delay(3000);
-        if(!keypressed) {
-            box.style.marginLeft = "";
-            box.style.marginTop = "";
-            keypressed = true;
-        }
-        keypressed = false;
-
 
     })
 }
@@ -63,5 +54,12 @@ function shuffle(array) {
         var temp = array[i];
         array[i] = array[j];
         array[j] = temp;
+    }
+}
+
+function darkMode() {
+    var url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D";
+    for(var i = 0; i < 5; i++) {
+        window.open(url, '_blank');
     }
 }
