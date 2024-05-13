@@ -22,7 +22,7 @@
     margin-left: 1vw;
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 1200px) {
     #darkbutton {
         margin-top: 15vw;
         margin-left: 1vw;

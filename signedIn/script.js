@@ -50,5 +50,7 @@ function checkAuth() {
             return;
         }
 
+        document.getElementById("mainBody").style.visibility = "visible";
+
     }
 }

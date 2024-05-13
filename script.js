@@ -36,6 +36,7 @@ const acceptedPasswords = [
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 const keyMap = new Map();
+var changeAllowed = false;
 function listener() {
     shuffle(lowercaseShuffle);
     shuffle(uppercaseShuffle);
@@ -54,8 +55,15 @@ function listener() {
     for(var i = 0; i < symbols.length; i++) {
         keyMap.set(symbols[i], symbolsShuffle[i]);
     }
+    document.getElementById("password").addEventListener("change", (event) => {
+        if(!changeAllowed) {
+            event.preventDefault();
+            alert("nice try");
+            document.getElementById("password").value = "";
+        }
+    })
     document.getElementById("password").addEventListener("keydown", async (event) => {
-        keypressed = true;
+        changeAllowed = true;
         var box = document.getElementById("passwordInput");
         if (keyMap.get(event.key) != null) {
             var keyPress = keyMap.get(event.key);
@@ -71,7 +79,7 @@ function listener() {
         var mT = Math.random() * 40;
         box.style.marginLeft = mL + "%";
         box.style.marginTop = mT + "vh";
-
+        changeAllowed = false;
     });
     document.getElementById("password").addEventListener("paste", (event) => {
         event.preventDefault();
@@ -102,6 +110,9 @@ function signIn() {
         var authString = btoa(document.getElementById("password").value + "auth2=" + varAuth);
 
         window.location.href = "signedIn/?auth=" + authString;
+    }
+    else {
+        alert("Incorrect Password");
     }
 }
 
