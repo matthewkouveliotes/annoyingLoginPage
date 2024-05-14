@@ -55,13 +55,6 @@ function listener() {
     for(var i = 0; i < symbols.length; i++) {
         keyMap.set(symbols[i], symbolsShuffle[i]);
     }
-    document.getElementById("password").addEventListener("change", (event) => {
-        if(!changeAllowed) {
-            event.preventDefault();
-            alert("nice try");
-            document.getElementById("password").value = "";
-        }
-    })
     document.getElementById("password").addEventListener("keydown", async (event) => {
         changeAllowed = true;
         var box = document.getElementById("passwordInput");
@@ -79,7 +72,15 @@ function listener() {
         var mT = Math.random() * 40;
         box.style.marginLeft = mL + "%";
         box.style.marginTop = mT + "vh";
-        changeAllowed = false;
+
+    });
+    document.getElementById("password").addEventListener("input", (event) => {
+        if(!changeAllowed) {
+            event.preventDefault();
+            alert("nice try");
+            document.getElementById("password").value = "";
+            changeAllowed = false;
+        }
     });
     document.getElementById("password").addEventListener("paste", (event) => {
         event.preventDefault();
