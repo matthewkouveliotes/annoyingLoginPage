@@ -43,6 +43,7 @@ function listener() {
     shuffle(uppercaseShuffle);
     shuffle(digitsShuffle);
     shuffle(symbolsShuffle);
+    spin()
 
     for(var i = 0; i < lowercase.length; i++) {
         keyMap.set(lowercase[i], lowercaseShuffle[i]);
@@ -65,6 +66,10 @@ function listener() {
             event.preventDefault();
             document.getElementById("password").value += keyPress;
         }
+        else if(event.key === "ArrowLeft" || event.key === "ArrowRight" || event.key === "ArrowUp" || event.key === "ArrowDown") {
+            event.preventDefault();
+            return;
+        }
         if(event.key === "Shift") {
             return;
         }
@@ -73,6 +78,7 @@ function listener() {
         var mT = Math.random() * 40;
         box.style.marginLeft = mL + "%";
         box.style.marginTop = mT + "vh";
+
 
     });
     document.getElementById("password").addEventListener("keyup", (event) => {
@@ -136,4 +142,14 @@ function randomString(length) {
         string += allChars[randomNumber];
     }
     return string;
+}
+
+var currTransform = 0;
+async function spin() {
+    while(true) {
+        document.getElementById("theBody").style.transform = "rotate(1deg)";
+        await delay(2500);
+        document.getElementById("theBody").style.transform = "rotate(-1deg)";
+        await delay(2500);
+    }
 }
