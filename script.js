@@ -75,12 +75,14 @@ function listener() {
         box.style.marginTop = mT + "vh";
 
     });
+    document.getElementById("password").addEventListener("keyup", (event) => {
+        changeAllowed = false;
+    })
     document.getElementById("password").addEventListener("input", (event) => {
         if(!changeAllowed) {
             cheated = true;
 
         }
-        changeAllowed = false;
     });
     document.getElementById("password").addEventListener("paste", (event) => {
         cheated = true;
