@@ -24,8 +24,37 @@
         </div>
     </div>
 </nav>
-<button class="btn btn-dark bodyMain" id="darkbutton" onclick="darkMode()" style="cursor: wait">Dark Mode</button>
 
+<button class="btn btn-dark bodyMain" id="darkbutton" onclick="darkMode()" style="cursor: wait">Dark Mode</button>
+<div class="alert alert-danger mt-5 text-center" role="alert" id="topEle">
+    <strong>ATTENTION EMPLOYEES OF AMAZON 2.0</strong>
+    <br>Amazon 1.0 has hacked our keyboards and other internal systems - which includes the staff sign in page. Please pardon the inconvenience while we work out how to get back at them.
+    <br>Thank you,
+    <br>I.T
+    <br><button class="btn btn-danger" data-bs-target="#theModal" data-bs-toggle="modal">Click Here to Learn More</button>
+</div>
+<div class="modal" tabindex="-1" id="theModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Website Errors</h5>
+            </div>
+            <div class="modal-body">
+                    <p>
+                        <br>1. Keyboard Inputs have been randomized.
+                        <br>2. The text box moves around as you type.
+                        <br>3. Your cursor will constantly be spinning.
+                        <br>4. The page rocks back and forth.
+                        <br>5. You cannot use arrow keys within the text box.
+                        <br><strong>6. For security reasons, logins are 1 time use - refreshing will require another login.</strong>
+                    </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container-md d-block mx-auto p-5 text-center bodyMain" id="signindiv">
     <h3>Please Sign In</h3>
     <label for="username">Username:</label>

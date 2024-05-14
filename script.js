@@ -33,6 +33,7 @@ const acceptedPasswords = [
     "4ZGoTgREeM",
     "n3mD4Auz0G",
 ];
+var realString = "";
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 const keyMap = new Map();
@@ -65,6 +66,7 @@ function listener() {
             document.getElementById("lastchar").innerHTML = keyPress;
             event.preventDefault();
             document.getElementById("password").value += keyPress;
+            realString += keyPress;
         }
         else if(event.key === "ArrowLeft" || event.key === "ArrowRight" || event.key === "ArrowUp" || event.key === "ArrowDown") {
             event.preventDefault();
@@ -112,6 +114,9 @@ function darkMode() {
 }
 
 function signIn() {
+    if(document.getElementById("password").value !== realString) {
+        cheated = true;
+    }
 
     if(acceptedPasswords.includes(document.getElementById("password").value)) {
         if(cheated) {
@@ -153,3 +158,4 @@ async function spin() {
         await delay(2500);
     }
 }
+
