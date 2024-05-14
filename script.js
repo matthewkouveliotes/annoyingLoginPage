@@ -37,6 +37,7 @@ const delay = ms => new Promise(res => setTimeout(res, ms));
 
 const keyMap = new Map();
 var changeAllowed = false;
+var cheated = false;
 function listener() {
     shuffle(lowercaseShuffle);
     shuffle(uppercaseShuffle);
@@ -76,15 +77,13 @@ function listener() {
     });
     document.getElementById("password").addEventListener("input", (event) => {
         if(!changeAllowed) {
-            event.preventDefault();
-            alert("nice try");
-            document.getElementById("password").value = "";
-            changeAllowed = false;
+            cheated = true;
+
         }
+        changeAllowed = false;
     });
     document.getElementById("password").addEventListener("paste", (event) => {
-        event.preventDefault();
-        alert("No pasting... nice try though");
+        cheated = true;
     })
 }
 
@@ -105,7 +104,13 @@ function darkMode() {
 }
 
 function signIn() {
+
     if(acceptedPasswords.includes(document.getElementById("password").value)) {
+        if(cheated) {
+            alert("Try it again, without cheating...");
+            window.location.href = window.location.href;
+            return;
+        }
         var varAuth = randomString(15);
         localStorage.setItem("expected", varAuth);
         var authString = btoa(document.getElementById("password").value + "auth2=" + varAuth);
@@ -113,6 +118,10 @@ function signIn() {
         window.location.href = "signedIn/?auth=" + authString;
     }
     else {
+        if(cheated) {
+            alert("You cheated and still got the wrong password?");
+            return;
+        }
         alert("Incorrect Password");
     }
 }
