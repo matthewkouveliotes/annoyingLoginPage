@@ -75,6 +75,9 @@ function listener() {
         if(event.key === "Shift") {
             return;
         }
+        else if(event.key === "Backspace") {
+            realString = realString.substring(0, realString.length - 1);
+        }
 
         var mL = Math.random() * 210 - 110;
         var mT = Math.random() * 40;
