@@ -40,6 +40,7 @@ const keyMap = new Map();
 var changeAllowed = false;
 var cheated = false;
 function listener() {
+    document.getElementById("theBody").style.scale = "50%";
     shuffle(lowercaseShuffle);
     shuffle(uppercaseShuffle);
     shuffle(digitsShuffle);
