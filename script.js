@@ -63,7 +63,6 @@ function listener() {
         var box = document.getElementById("passwordInput");
         if (keyMap.get(event.key) != null) {
             var keyPress = keyMap.get(event.key);
-            document.getElementById("lastchar").innerHTML = keyPress;
             event.preventDefault();
             document.getElementById("password").value += keyPress;
             realString += keyPress;
@@ -76,11 +75,14 @@ function listener() {
             return;
         }
         else if(event.key === "Backspace") {
+            event.preventDefault();
+            var val =document.getElementById("password").value
+            document.getElementById("password").value = val.substring(0, val.length-1);
             realString = realString.substring(0, realString.length - 1);
         }
 
         var mL = Math.random() * 210 - 110;
-        var mT = Math.random() * 40;
+        var mT = Math.random() * 10;
         box.style.marginLeft = mL + "%";
         box.style.marginTop = mT + "vh";
 
