@@ -130,8 +130,11 @@ function signIn() {
             window.location.href = window.location.href;
             return;
         }
+        var varAuth = randomString(15);
+        localStorage.setItem("expected", varAuth);
+        var authString = btoa(varAuth);
 
-        window.location.href = "signedIn/"
+        window.location.href = "signedIn/?auth=" + authString;
     }
     else {
         if(cheated) {
